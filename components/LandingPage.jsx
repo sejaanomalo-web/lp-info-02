@@ -416,6 +416,44 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* DEPOIMENTOS EM TEXTO */}
+      <section id="depoimentos" className="section-divider bg-[#f8f1e4] py-20 md:py-28">
+        <Container>
+          <SectionTitle
+            eyebrow="O que estão dizendo"
+            title={`Quem construiu.\nQuem transformou.`}
+          />
+
+          <motion.div
+            className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={listStagger}
+          >
+            {testimonials.map((item) => (
+              <motion.article
+                key={item.name}
+                variants={listItem}
+                className={`rounded-[1.2rem] border border-[#ddcdb0] bg-white p-6 shadow-soft ${
+                  item.featured ? "md:col-span-2 xl:col-span-1" : ""
+                }`}
+              >
+                <p className="text-base leading-relaxed text-[#34295e]">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+                <p className="mt-5 text-sm font-semibold uppercase tracking-[0.16em] text-brand-terracotta">
+                  {item.name}
+                </p>
+                {item.role ? (
+                  <p className="mt-1 text-xs text-[#3a2f64]/60">{item.role}</p>
+                ) : null}
+              </motion.article>
+            ))}
+          </motion.div>
+        </Container>
+      </section>
+
       {/* OS 4 PILARES */}
       <section id="pilares" className="section-divider bg-brand-navy py-20 text-white md:py-28">
         <Container>
@@ -666,44 +704,6 @@ export default function LandingPage() {
               </div>
             </Reveal>
           </div>
-        </Container>
-      </section>
-
-      {/* DEPOIMENTOS EM TEXTO */}
-      <section id="depoimentos" className="section-divider bg-[#f8f1e4] py-20 md:py-28">
-        <Container>
-          <SectionTitle
-            eyebrow="O que estão dizendo"
-            title={`Quem construiu.\nQuem transformou.`}
-          />
-
-          <motion.div
-            className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-            variants={listStagger}
-          >
-            {testimonials.map((item) => (
-              <motion.article
-                key={item.name}
-                variants={listItem}
-                className={`rounded-[1.2rem] border border-[#ddcdb0] bg-white p-6 shadow-soft ${
-                  item.featured ? "md:col-span-2 xl:col-span-1" : ""
-                }`}
-              >
-                <p className="text-base leading-relaxed text-[#34295e]">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
-                <p className="mt-5 text-sm font-semibold uppercase tracking-[0.16em] text-brand-terracotta">
-                  {item.name}
-                </p>
-                {item.role ? (
-                  <p className="mt-1 text-xs text-[#3a2f64]/60">{item.role}</p>
-                ) : null}
-              </motion.article>
-            ))}
-          </motion.div>
         </Container>
       </section>
 
