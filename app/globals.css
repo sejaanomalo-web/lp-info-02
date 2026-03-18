@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-navy: #201747;
+  --brand-terracotta: #d3451e;
+  --brand-cream: #f1dab2;
+  --brand-white: #ffffff;
+  --brand-ink: #0f0a25;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--brand-ink);
+  background: #f6f1e8;
+  font-family: var(--font-titillium), "Titillium Web", sans-serif;
+}
+
+::selection {
+  background: rgba(211, 69, 30, 0.2);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.section-divider {
+  border-top: 1px solid rgba(32, 23, 71, 0.14);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.glass-card {
+  backdrop-filter: blur(6px);
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+}
+
+.placeholder-pattern {
+  background-image:
+    radial-gradient(circle at 20% 25%, rgba(241, 218, 178, 0.28), transparent 35%),
+    radial-gradient(circle at 80% 75%, rgba(211, 69, 30, 0.15), transparent 35%);
+}
