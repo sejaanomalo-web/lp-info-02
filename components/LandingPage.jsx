@@ -6,13 +6,12 @@ import {
   audience,
   benefits,
   deliverables,
-  faqs,
-  mediaPlaceholders,
+  faq,
   notFor,
-  objections,
   painSignals,
   pillars,
-  testimonials
+  testimonials,
+  videoTestimonials
 } from "@/lib/content";
 import Container from "@/components/ui/Container";
 import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
@@ -147,6 +146,12 @@ function Accordion({ items, tone = "light" }) {
 export default function LandingPage() {
   return (
     <main className="bg-[#f6f1e8]">
+      {/* TOPBAR */}
+      <div className="bg-brand-terracotta py-2 text-center text-xs font-semibold uppercase tracking-[0.18em] text-white">
+        Módulo 1 já disponível&nbsp;&nbsp;·&nbsp;&nbsp;Acesso imediato após a inscrição
+      </div>
+
+      {/* HERO */}
       <section
         id="hero"
         className="relative isolate overflow-hidden bg-brand-navy pb-24 pt-8 text-white md:pb-32"
@@ -175,23 +180,25 @@ export default function LandingPage() {
           <div className="mt-14 grid items-center gap-12 lg:grid-cols-[1.04fr_0.96fr]">
             <Reveal>
               <p className="text-xs uppercase tracking-[0.22em] text-brand-cream/85">
-                Treinamento premium de comunicação estratégica
+                Diego Knebel apresenta
               </p>
-              <h1 className="mt-5 text-balance text-4xl font-semibold leading-[1.04] md:text-6xl">
-                Transforme conhecimento em comunicação clara, memorável e influente.
+              <h1 className="mt-5 text-balance text-5xl font-semibold leading-[1.04] md:text-7xl">
+                Arquiteto
+                <br />
+                de Ideias
               </h1>
-              <p className="mt-6 max-w-2xl text-balance text-xl font-light leading-relaxed text-brand-cream/90">
-                O <strong>Arquiteto de Ideias</strong> é o método do Diego Knebel para quem quer
-                comunicar com profundidade, presença e estrutura, sem ruído e sem exagero.
+              <p className="mt-4 text-2xl font-light text-brand-cream/90">
+                Fale, Convença e Envolva
               </p>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-cream/85">
-                Não é sobre falar mais. É sobre construir mensagens impossíveis de ignorar.
+              <p className="mt-6 max-w-2xl text-balance text-lg leading-relaxed text-brand-cream/85">
+                Você já venceu o medo de falar. O problema agora é diferente — e mais difícil.
+                Você fala, mas as pessoas não chegam onde você quer.
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <PrimaryButton href="#oferta">Quero me tornar Arquiteto de Ideias</PrimaryButton>
+                <PrimaryButton href="#oferta">Quero construir minha clareza</PrimaryButton>
                 <span className="text-sm tracking-wide text-brand-cream/80">
-                  Garantia incondicional de 7 dias.
+                  Acesso vitalício · Garantia de 7 dias
                 </span>
               </div>
             </Reveal>
@@ -211,7 +218,9 @@ export default function LandingPage() {
                   <p className="text-xs uppercase tracking-[0.18em] text-brand-cream/80">
                     Direção central
                   </p>
-                  <p className="mt-1 text-sm font-semibold text-white">Profundidade com clareza</p>
+                  <p className="mt-1 text-sm font-semibold text-white">
+                    Clareza que guia, não que explica
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -223,7 +232,7 @@ export default function LandingPage() {
                     Resultado esperado
                   </p>
                   <p className="mt-1 text-sm font-semibold text-white">
-                    Autoridade tranquila e memorável
+                    Autoridade percebida em cada fala
                   </p>
                 </motion.div>
               </div>
@@ -232,14 +241,14 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* DIAGNÓSTICO DA DOR */}
       <section id="identificacao" className="section-divider bg-[#171033] py-16 text-brand-cream">
         <Container>
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.22em] text-brand-cream/75">
-              Identificação imediata
-            </p>
             <h2 className="mt-4 max-w-3xl text-balance text-3xl font-semibold leading-tight text-white md:text-4xl">
-              Quando a comunicação está confusa, o valor do seu repertório fica invisível.
+              Quando a comunicação está confusa,
+              <br className="hidden md:block" />
+              o valor do seu repertório fica invisível.
             </h2>
           </Reveal>
 
@@ -263,29 +272,33 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* O PROBLEMA REAL */}
       <section id="dor" className="section-divider bg-[#f6f1e8] py-20 md:py-28">
         <Container className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-terracotta">
-              Dor e consciência
+              O diagnóstico
             </p>
             <h2 className="mt-4 text-balance text-3xl font-semibold text-brand-navy md:text-5xl">
-              O problema não é falta de capacidade. É falta de arquitetura.
+              Você não é confuso por saber pouco.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#32295e]/90">
-              Você já tem conteúdo. Já estudou, já viveu, já acumulou repertório. Mas sem estrutura,
-              as ideias ficam dispersas, a fala perde força e a mensagem não gera a influência que
-              poderia gerar.
+              É o oposto. Você é confuso porque sabe demais — e o seu cérebro esqueceu como era não
+              saber. A ciência chama isso de Maldição do Conhecimento. Você pulou etapas, usou
+              termos que só você entende, e pressupôs que o óbvio para você é óbvio para o outro.
+              Não é.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-[#32295e]/90">
-              O Arquiteto de Ideias organiza sua comunicação para que profundidade e clareza coexistam
-              com elegância e presença.
+              Enquanto isso, pessoas com metade do seu preparo ocupam lugares que deveriam ser seus
+              — simplesmente porque elas conseguem se fazer entender. Isso dói. E é evitável.
             </p>
           </Reveal>
 
           <Reveal delay={0.1}>
             <div className="rounded-[1.4rem] border border-[#e2d5c0] bg-[#fffaf1] p-8 shadow-soft">
-              <p className="text-xs uppercase tracking-[0.2em] text-brand-terracotta">Sinal crítico</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-brand-terracotta">
+                Sinal crítico
+              </p>
               <p className="mt-4 text-2xl font-semibold leading-tight text-brand-navy">
                 Quanto mais conhecimento sem estrutura, maior o risco de ser mal interpretado.
               </p>
@@ -298,6 +311,7 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* QUEBRA DE CRENÇA */}
       <section id="quebra-crenca" className="section-divider bg-brand-navy py-20 text-white md:py-28">
         <Container>
           <SectionTitle
@@ -331,17 +345,27 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* A SOLUÇÃO */}
       <section id="solucao" className="section-divider bg-[#fbf7ee] py-20 md:py-28">
         <Container className="grid gap-12 lg:grid-cols-[1.06fr_0.94fr]">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.22em] text-brand-terracotta">A solução</p>
             <h2 className="mt-4 text-balance text-3xl font-semibold text-brand-navy md:text-5xl">
-              Arquiteto de Ideias: método sólido para transformar fala em posicionamento.
+              Falar bem não é um dom.
+              <br />
+              É uma engenharia.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#372d62]/90">
-              Você aprende a organizar pensamento, construir narrativa e aplicar recursos retóricos
-              com intenção. O resultado é uma comunicação clara, elegante e estrategicamente
-              irresistível.
+              Catedrais não ficam de pé por séculos porque alguém foi "criativo". Elas ficam porque
+              alguém calculou as vigas antes de pintar os vitrais. A sua comunicação funciona igual.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-[#372d62]/90">
+              O Arquiteto de Ideias é o treinamento que constrói a estrutura invisível por trás de
+              cada fala — de um Reels de 60 segundos a uma masterclass de 2 horas — para que você
+              nunca mais se perca no meio do caminho.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-[#372d62]/90">
+              Não é sobre falar difícil. Não é sobre ser performático. É sobre ser inesquecível.
             </p>
             <ul className="mt-8 space-y-3 text-[1.04rem] leading-relaxed text-[#372d62]/90">
               <li>• Método prático e aplicável a reuniões, aulas, lives e apresentações.</li>
@@ -360,12 +384,12 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* BENEFÍCIOS */}
       <section id="beneficios" className="section-divider bg-[#f1e7d4] py-20 md:py-28">
         <Container>
           <SectionTitle
-            eyebrow="Benefícios principais"
-            title="Resultados práticos, emocionais e estratégicos."
-            description="Cada etapa do método foi desenhada para elevar sua clareza, sua presença e seu poder de influência."
+            eyebrow="Resultados práticos, emocionais e estratégicos."
+            title="Cada etapa do método foi desenhada para elevar sua clareza, sua presença e seu poder de influência."
           />
 
           <motion.div
@@ -383,18 +407,21 @@ export default function LandingPage() {
               >
                 <div className="mb-4 h-[2px] w-12 bg-brand-terracotta/70 transition-all duration-300 group-hover:w-20" />
                 <h3 className="text-2xl font-semibold text-brand-navy">{benefit.title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-[#3a2f64]/90">{benefit.description}</p>
+                <p className="mt-3 text-base leading-relaxed text-[#3a2f64]/90">
+                  {benefit.description}
+                </p>
               </motion.article>
             ))}
           </motion.div>
         </Container>
       </section>
 
+      {/* OS 4 PILARES */}
       <section id="pilares" className="section-divider bg-brand-navy py-20 text-white md:py-28">
         <Container>
           <SectionTitle
             light
-            eyebrow="Os 4 pilares do método"
+            eyebrow="O método central"
             title="Uma arquitetura de comunicação que sustenta performance de alto nível."
             description="Clareza, estrutura, retórica e domínio situacional em um sistema único."
           />
@@ -415,47 +442,62 @@ export default function LandingPage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-cream/85">
                   Pilar {pillar.id}
                 </p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">{pillar.title}</h3>
-                <p className="mt-4 text-base leading-relaxed text-brand-cream/90">{pillar.description}</p>
+                <h3 className="mt-3 text-2xl font-semibold text-white">
+                  {pillar.title}{" "}
+                  <span className="text-brand-cream/60">
+                    [{pillar.letter} — {pillar.letterLabel}]
+                  </span>
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-brand-cream/90">
+                  {pillar.description}
+                </p>
               </motion.article>
             ))}
           </motion.div>
         </Container>
       </section>
 
+      {/* POSICIONAMENTO CONCEITUAL */}
       <section id="posicionamento" className="section-divider bg-[#100b26] py-24 text-white md:py-32">
         <Container>
           <Reveal className="mx-auto max-w-5xl text-center">
-            <p className="text-xs uppercase tracking-[0.22em] text-brand-cream/80">
-              Posicionamento conceitual
-            </p>
             <p className="mt-6 text-balance text-4xl font-semibold leading-tight md:text-6xl">
               Não é sobre parecer inteligente.
               <br className="hidden md:block" /> É sobre ser impossível de ignorar.
             </p>
-            <p className="mx-auto mt-6 max-w-3xl text-balance text-xl font-light leading-relaxed text-brand-cream/85">
-              Quando sua mensagem combina profundidade e clareza, sua presença deixa de competir por
-              atenção e passa a comandar atenção.
+            <p className="mx-auto mt-8 max-w-3xl text-balance text-xl font-light leading-relaxed text-brand-cream/85">
+              Quando sua mensagem combina profundidade e clareza,
+              <br className="hidden md:block" />
+              sua presença deixa de competir por atenção
+              <br className="hidden md:block" />e passa a comandar atenção.
             </p>
           </Reveal>
         </Container>
       </section>
 
+      {/* O QUE VOCÊ RECEBE */}
       <section id="recebe" className="section-divider bg-[#f8f2e6] py-20 md:py-28">
         <Container>
           <SectionTitle
-            eyebrow="O que você recebe"
-            title="Entregáveis organizados para gerar valor desde a primeira aplicação."
+            eyebrow="O que você vai aprender"
+            title="16 aulas. 4 módulos. Uma construção completa."
           />
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             <Reveal>
               <div className="rounded-[1.35rem] border border-[#ddcdb0] bg-white p-7 shadow-soft">
                 <p className="text-xs uppercase tracking-[0.2em] text-brand-terracotta">Módulos</p>
-                <ul className="mt-5 space-y-3">
+                <ul className="mt-5 space-y-4">
                   {deliverables.modules.map((module) => (
-                    <li key={module} className="rounded-xl border border-[#ece2d3] bg-[#fffcf6] px-4 py-3">
-                      <p className="text-base font-semibold text-brand-navy">{module}</p>
+                    <li key={module.title} className="rounded-xl border border-[#ece2d3] bg-[#fffcf6] px-4 py-3">
+                      <p className="text-base font-semibold text-brand-navy">{module.title}</p>
+                      <ul className="mt-2 space-y-1">
+                        {module.lessons.map((lesson) => (
+                          <li key={lesson} className="text-sm leading-relaxed text-[#3a2f64]/80">
+                            — {lesson}
+                          </li>
+                        ))}
+                      </ul>
                     </li>
                   ))}
                 </ul>
@@ -464,7 +506,9 @@ export default function LandingPage() {
 
             <Reveal delay={0.12}>
               <div className="rounded-[1.35rem] border border-[#ddcdb0] bg-white p-7 shadow-soft">
-                <p className="text-xs uppercase tracking-[0.2em] text-brand-terracotta">Bônus e ativos</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-brand-terracotta">
+                  Bônus e ativos
+                </p>
                 <ul className="mt-5 space-y-3">
                   {deliverables.extras.map((extra) => (
                     <li key={extra} className="rounded-xl border border-[#ece2d3] bg-[#fffcf6] px-4 py-3">
@@ -478,38 +522,61 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* PARA QUEM É / NÃO É */}
       <section id="publico" className="section-divider bg-[#f1e7d4] py-20 md:py-28">
-        <Container className="grid gap-6 lg:grid-cols-2">
-          <Reveal>
-            <div className="h-full rounded-[1.35rem] border border-[#d9c8a7] bg-[#fff8ea] p-7">
-              <p className="text-xs uppercase tracking-[0.2em] text-brand-terracotta">Para quem é</p>
-              <h3 className="mt-3 text-3xl font-semibold text-brand-navy">Perfil ideal do aluno</h3>
-              <ul className="mt-6 space-y-3">
-                {audience.map((item) => (
-                  <li key={item} className="text-[1.04rem] leading-relaxed text-[#3c3168]">
-                    • {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
+        <Container>
+          <SectionTitle
+            eyebrow="Para quem é"
+            title="Este curso é para você se já superou o medo mas ainda luta com o caos."
+          />
 
-          <Reveal delay={0.1}>
-            <div className="h-full rounded-[1.35rem] border border-[#d9c8a7] bg-brand-navy p-7 text-brand-cream">
-              <p className="text-xs uppercase tracking-[0.2em] text-brand-cream/75">Não é para quem</p>
-              <h3 className="mt-3 text-3xl font-semibold text-white">Busca atalhos sem método</h3>
-              <ul className="mt-6 space-y-3">
-                {notFor.map((item) => (
-                  <li key={item} className="text-[1.04rem] leading-relaxed text-brand-cream/90">
-                    • {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            <Reveal>
+              <div className="h-full rounded-[1.35rem] border border-[#d9c8a7] bg-[#fff8ea] p-7">
+                <motion.ul
+                  className="space-y-4"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  variants={listStagger}
+                >
+                  {audience.map((item) => (
+                    <motion.li
+                      key={item.id}
+                      variants={listItem}
+                      className="rounded-xl border border-[#e4d4b8] bg-white px-5 py-4"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-terracotta">
+                        {item.id} · {item.role}
+                      </p>
+                      <p className="mt-2 text-[1.02rem] leading-relaxed text-[#3c3168]">
+                        {item.description}
+                      </p>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="h-full rounded-[1.35rem] border border-[#d9c8a7] bg-brand-navy p-7 text-brand-cream">
+                <p className="text-xs uppercase tracking-[0.2em] text-brand-cream/75">
+                  Não é para quem
+                </p>
+                <ul className="mt-6 space-y-3">
+                  {notFor.map((item) => (
+                    <li key={item} className="text-[1.04rem] leading-relaxed text-brand-cream/90">
+                      • {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
 
+      {/* SOBRE DIEGO KNEBEL */}
       <section id="diego" className="section-divider bg-[#fffaf2] py-20 md:py-28">
         <Container className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
@@ -521,29 +588,46 @@ export default function LandingPage() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <p className="text-xs uppercase tracking-[0.22em] text-brand-terracotta">Sobre Diego Knebel</p>
+            <p className="text-xs uppercase tracking-[0.22em] text-brand-terracotta">
+              Quem vai te guiar
+            </p>
             <h2 className="mt-4 text-balance text-3xl font-semibold text-brand-navy md:text-5xl">
               Autoridade com presença didática e direção estratégica.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#3a2f64]/90">
-              Diego Knebel orienta profissionais a transformarem conhecimento em comunicação de alto
-              impacto, combinando estrutura, influência e clareza. Sua abordagem une profundidade
-              intelectual com aplicação prática e linguagem acessível.
+              Há anos Diego estuda uma pergunta que ninguém pergunta alto: por que especialistas
+              brilhantes são ignorados enquanto comunicadores mediocres são seguidos?
             </p>
             <p className="mt-4 text-lg leading-relaxed text-[#3a2f64]/90">
-              Bio curta oficial, números e credenciais detalhadas serão inseridos aqui:
-              <span className="font-semibold text-brand-navy"> [Placeholder de bio e autoridade]</span>.
+              A resposta não estava no carisma nem no "dom da palavra". Estava na engenharia. Diego
+              construiu um método — testado em centenas de mentores, criadores e líderes — que
+              transforma o caos mental em clareza soberana.
             </p>
+            <p className="mt-4 text-lg leading-relaxed text-[#3a2f64]/90">
+              O Arquiteto de Ideias é esse método. Didático, denso, sem rodeio. Cada aula foi
+              roteirizada para que você sinta a transformação antes de terminar o módulo — não numa
+              semana, não "quando você praticar bastante".
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-[#3a2f64]/90">
+              Diego não ensina oratória performática. Ele ensina engenharia verbal. A diferença é
+              que uma você usa no palco. A outra você usa na vida inteira.
+            </p>
+            <p className="mt-4 text-base font-semibold text-brand-terracotta">@diegoknebel_</p>
 
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {[
-                "Alunos impactados [Placeholder]",
-                "Horas de aula [Placeholder]",
-                "Cases e resultados [Placeholder]"
+                { label: "Alunos impactados", value: "[DADOS REAIS]" },
+                { label: "Horas de aula produzidas", value: "[DADOS REAIS]" },
+                { label: "Cases documentados", value: "[DADOS REAIS]" }
               ].map((metric) => (
-                <div key={metric} className="rounded-2xl border border-[#ddcdb0] bg-[#fff6e8] p-4">
-                  <p className="text-sm uppercase tracking-[0.14em] text-brand-terracotta">Autoridade</p>
-                  <p className="mt-2 text-lg font-semibold text-brand-navy">{metric}</p>
+                <div
+                  key={metric.label}
+                  className="rounded-2xl border border-[#ddcdb0] bg-[#fff6e8] p-4"
+                >
+                  <p className="text-sm uppercase tracking-[0.14em] text-brand-terracotta">
+                    {metric.label}
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-brand-navy">{metric.value}</p>
                 </div>
               ))}
             </div>
@@ -551,6 +635,7 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* DEMONSTRAÇÃO DE TÉCNICA */}
       <section id="tecnica" className="section-divider bg-brand-navy py-20 text-white md:py-28">
         <Container>
           <SectionTitle
@@ -565,7 +650,8 @@ export default function LandingPage() {
               <div className="h-full rounded-[1.3rem] border border-white/20 bg-white/5 p-7">
                 <p className="text-xs uppercase tracking-[0.2em] text-brand-cream/75">Antes</p>
                 <p className="mt-4 text-2xl font-semibold text-white/80">
-                  &ldquo;Eu queria compartilhar algumas ideias que talvez possam te ajudar.&rdquo;
+                  &ldquo;Eu queria compartilhar algumas ideias que talvez possam te ajudar a
+                  melhorar a sua comunicação.&rdquo;
                 </p>
               </div>
             </Reveal>
@@ -583,11 +669,12 @@ export default function LandingPage() {
         </Container>
       </section>
 
+      {/* DEPOIMENTOS EM TEXTO */}
       <section id="depoimentos" className="section-divider bg-[#f8f1e4] py-20 md:py-28">
         <Container>
           <SectionTitle
-            eyebrow="Depoimentos"
-            title="Resultados percebidos por quem aplicou o método."
+            eyebrow="O que estão dizendo"
+            title={`Quem construiu.\nQuem transformou.`}
           />
 
           <motion.div
@@ -601,7 +688,9 @@ export default function LandingPage() {
               <motion.article
                 key={item.name}
                 variants={listItem}
-                className="rounded-[1.2rem] border border-[#ddcdb0] bg-white p-6 shadow-soft"
+                className={`rounded-[1.2rem] border border-[#ddcdb0] bg-white p-6 shadow-soft ${
+                  item.featured ? "md:col-span-2 xl:col-span-1" : ""
+                }`}
               >
                 <p className="text-base leading-relaxed text-[#34295e]">
                   &ldquo;{item.quote}&rdquo;
@@ -609,17 +698,21 @@ export default function LandingPage() {
                 <p className="mt-5 text-sm font-semibold uppercase tracking-[0.16em] text-brand-terracotta">
                   {item.name}
                 </p>
+                {item.role ? (
+                  <p className="mt-1 text-xs text-[#3a2f64]/60">{item.role}</p>
+                ) : null}
               </motion.article>
             ))}
           </motion.div>
         </Container>
       </section>
 
+      {/* DEPOIMENTOS EM MÍDIA */}
       <section id="depoimentos-midia" className="section-divider bg-[#fffaf2] py-20 md:py-28">
         <Container>
           <SectionTitle
-            eyebrow="Depoimentos em mídia"
-            title="Espaços reservados para fotos e vídeos de prova social premium."
+            eyebrow="Depoimentos em vídeo"
+            title={`Veja quem já saiu\ndo caos para a clareza.`}
           />
 
           <motion.div
@@ -629,76 +722,112 @@ export default function LandingPage() {
             viewport={{ once: true, amount: 0.15 }}
             variants={listStagger}
           >
-            {mediaPlaceholders.map((slot) => (
+            {videoTestimonials.map((item) => (
               <motion.div
-                key={slot}
+                key={item.name}
                 variants={listItem}
                 className="rounded-[1.2rem] border border-[#ddcdb0] bg-gradient-to-b from-[#fff9ef] to-white p-5"
               >
-                <ImagePlaceholder label={slot} ratio="aspect-[4/3]" className="border-[#d8c6a8]" />
+                <ImagePlaceholder
+                  label={`Vídeo — ${item.name}`}
+                  ratio="aspect-[4/3]"
+                  className="border-[#d8c6a8]"
+                />
+                <div className="mt-4 px-1">
+                  <p className="text-sm font-semibold text-brand-navy">{item.name}</p>
+                  <p className="text-xs text-[#3a2f64]/60">{item.role}</p>
+                  <p className="mt-2 text-sm italic leading-relaxed text-[#34295e]/80">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                  <span className="mt-3 inline-block rounded-full border border-brand-terracotta/30 bg-brand-terracotta/8 px-3 py-1 text-xs font-semibold text-brand-terracotta">
+                    {item.tag}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </Container>
       </section>
 
+      {/* FAQ */}
       <section id="objecoes" className="section-divider bg-brand-navy py-20 text-white md:py-28">
         <Container>
           <SectionTitle
             light
-            eyebrow="Quebra de objeções"
+            eyebrow="Antes de decidir, leia isso."
             title="Respostas diretas para as dúvidas mais comuns."
           />
           <div className="mt-12">
-            <Accordion items={objections} tone="dark" />
+            <Accordion items={faq} tone="dark" />
           </div>
         </Container>
       </section>
 
+      {/* BÔNUS ESPECIAL */}
       <section id="bonus" className="section-divider bg-[#f4e8d2] py-20 md:py-28">
         <Container>
           <Reveal className="rounded-[1.5rem] border border-[#d7c29a] bg-gradient-to-br from-[#fff9ee] to-[#fff1de] p-8 md:p-12">
-            <p className="text-xs uppercase tracking-[0.22em] text-brand-terracotta">Bônus especial</p>
+            <p className="text-xs uppercase tracking-[0.22em] text-brand-terracotta">
+              Bônus exclusivo
+            </p>
             <h2 className="mt-4 text-balance text-3xl font-semibold text-brand-navy md:text-5xl">
-              Pack de Templates de Roteiro
+              Pack de Templates GPS-C
             </h2>
             <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#3b3067]">
-              Modelos prontos para organizar ideias com rapidez e manter padrão de comunicação em
-              alto nível.
+              Modelos prontos para roteirizar aulas, vídeos, apresentações e lives com o método
+              GPS-C. Você preenche os espaços em branco — a estrutura já está lá. Aplique no mesmo
+              dia em que receber o acesso.
             </p>
             <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-brand-terracotta/35 bg-brand-terracotta/10 px-5 py-2">
               <span className="text-xs uppercase tracking-[0.18em] text-brand-terracotta">
                 Valor percebido
               </span>
-              <span className="text-lg font-semibold text-brand-navy">[R$ Placeholder]</span>
+              <span className="text-lg font-semibold text-brand-navy">R$ [DADOS REAIS]</span>
             </div>
+            <p className="mt-3 text-sm text-[#3b3067]/70">Incluso gratuitamente no seu acesso.</p>
           </Reveal>
         </Container>
       </section>
 
+      {/* OFERTA */}
       <section id="oferta" className="section-divider bg-[#130d2b] py-20 text-white md:py-28">
         <Container className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.22em] text-brand-cream/80">Oferta</p>
+            <p className="text-xs uppercase tracking-[0.22em] text-brand-cream/80">
+              O investimento
+            </p>
             <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight md:text-5xl">
-              Invista em uma comunicação que sustenta seu posicionamento por anos.
+              Uma habilidade que ninguém
+              <br />
+              vai tirar de você.
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-cream/90">
-              Condição comercial final, parcelamento e data limite devem ser inseridos neste bloco com
-              os dados oficiais da campanha.
+            <p className="mt-4 text-lg text-brand-cream/80">
+              Condição de lançamento — válida por tempo limitado.
             </p>
             <ul className="mt-7 space-y-3 text-base leading-relaxed text-brand-cream/90">
-              <li>• Acesso imediato à plataforma [Placeholder]</li>
-              <li>• Prazo de acesso [Placeholder]</li>
-              <li>• Certificado e suporte [Placeholder]</li>
+              {[
+                "✓ 16 aulas + 1 aula bônus em vídeo com roteiros completos",
+                "✓ 4 módulos — Base, Estrutura, Retórica e Soberania",
+                "✓ Pack de Templates GPS-C — preencha e aplique hoje",
+                "✓ Exercícios práticos em cada aula para fixação imediata",
+                "✓ Método do Paraquedas — improviso estruturado de emergência",
+                "✓ Aula Bônus: O Trono Vazio — a ponte para o próximo nível",
+                "✓ Acesso vitalício — incluindo atualizações futuras",
+                "✓ Certificado de conclusão  [DADOS REAIS]",
+                "✓ Suporte / Comunidade  [DADOS REAIS]"
+              ].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </Reveal>
 
           <Reveal delay={0.12}>
             <div className="rounded-[1.4rem] border border-brand-cream/25 bg-white/5 p-7 shadow-premium">
-              <p className="text-xs uppercase tracking-[0.2em] text-brand-cream/75">Condição premium</p>
-              <p className="mt-3 text-4xl font-semibold text-white">[R$ Preço oficial]</p>
-              <p className="mt-2 text-lg text-brand-cream/90">ou [Parcelamento Placeholder]</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-brand-cream/75">
+                Condição de lançamento
+              </p>
+              <p className="mt-3 text-4xl font-semibold text-white">R$ [DADOS REAIS]</p>
+              <p className="mt-2 text-lg text-brand-cream/90">ou [X]x de R$ [DADOS REAIS]</p>
 
               <div className="mt-7 grid gap-3">
                 <PrimaryButton className="w-full" href="#comprar">
@@ -709,53 +838,70 @@ export default function LandingPage() {
                 </PrimaryButton>
               </div>
 
-              <p id="comprar" className="mt-5 text-sm leading-relaxed text-brand-cream/80">
-                Pagamento seguro | Acesso em poucos minutos | Suporte para configuração inicial
+              <p id="comprar" className="mt-5 text-center text-sm leading-relaxed text-brand-cream/80">
+                Pagamento seguro&nbsp;·&nbsp;Acesso em poucos minutos&nbsp;·&nbsp;Suporte para
+                configuração inicial
               </p>
             </div>
           </Reveal>
         </Container>
       </section>
 
+      {/* GARANTIA */}
       <section id="garantia" className="section-divider bg-[#f8f1e4] py-20 md:py-24">
         <Container>
           <Reveal className="mx-auto max-w-4xl rounded-[1.4rem] border border-[#ddcdb0] bg-white p-9 text-center shadow-soft">
             <p className="text-xs uppercase tracking-[0.22em] text-brand-terracotta">Garantia</p>
             <h2 className="mt-3 text-4xl font-semibold text-brand-navy">7 dias de garantia total</h2>
             <p className="mt-4 text-lg leading-relaxed text-[#3a2f64]/90">
-              Você pode testar o conteúdo com segurança. Se não perceber valor real, solicite o
-              reembolso dentro do prazo oficial.
+              Você pode testar o conteúdo com segurança. Acesse o curso, aplique os primeiros
+              exercícios e, se não sentir que a sua mente está mais organizada e a sua fala mais
+              potente — devolvemos 100% do valor. Sem perguntas, sem burocracia.
             </p>
+            <p className="mt-4 text-lg font-semibold text-brand-navy">O risco é todo nosso.</p>
           </Reveal>
         </Container>
       </section>
 
-      <section id="faq" className="section-divider bg-[#fffaf2] py-20 md:py-28">
-        <Container>
-          <SectionTitle eyebrow="FAQ" title="Perguntas frequentes" />
-          <div className="mt-12">
-            <Accordion items={faqs} />
-          </div>
-        </Container>
-      </section>
-
+      {/* FECHAMENTO */}
       <section id="fechamento" className="section-divider bg-brand-navy py-20 text-white md:py-28">
         <Container>
           <Reveal className="mx-auto max-w-4xl text-center">
-            <p className="text-xs uppercase tracking-[0.22em] text-brand-cream/80">Fechamento</p>
+            <p className="text-xs uppercase tracking-[0.22em] text-brand-cream/80">
+              A decisão é agora
+            </p>
             <h2 className="mt-4 text-balance text-4xl font-semibold leading-tight md:text-6xl">
-              Seu conhecimento merece uma forma à altura.
+              Seu conhecimento merece
+              <br />
+              uma forma à altura.
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-balance text-xl leading-relaxed text-brand-cream/90">
-              Entre no Arquiteto de Ideias e transforme sua comunicação em um ativo de autoridade,
-              influência e presença.
+              Você pode continuar tentando explicar o seu oceano com gotas.
+              <br className="hidden md:block" />
+              Ou pode aprender a construir a ponte que leva o seu público até você.
+              <br className="hidden md:block" />
+              <br className="hidden md:block" />
+              O mundo está em silêncio esperando pelo seu comando.
             </p>
             <div className="mt-10">
               <PrimaryButton href="#oferta">Quero minha vaga no Arquiteto de Ideias</PrimaryButton>
             </div>
+            <p className="mt-5 text-sm text-brand-cream/70">
+              R$ [DADOS REAIS]&nbsp;·&nbsp;Acesso vitalício&nbsp;·&nbsp;Garantia de 7 dias
+            </p>
           </Reveal>
         </Container>
       </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[#0d0920] py-8 text-center text-sm text-brand-cream/50">
+        <p>
+          © 2025 Diego Knebel · @diegoknebel_ · Todos os direitos reservados
+        </p>
+        <p className="mt-2 text-xs">
+          [Links de política de privacidade e termos — DADOS REAIS]
+        </p>
+      </footer>
     </main>
   );
 }
