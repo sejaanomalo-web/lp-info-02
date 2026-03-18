@@ -763,32 +763,6 @@ export default function LandingPage() {
         </Container>
       </section>
 
-      {/* BÔNUS ESPECIAL */}
-      <section id="bonus" className="section-divider bg-[#f4e8d2] py-20 md:py-28">
-        <Container>
-          <Reveal className="rounded-[1.5rem] border border-[#d7c29a] bg-gradient-to-br from-[#fff9ee] to-[#fff1de] p-8 md:p-12">
-            <p className="text-xs uppercase tracking-[0.22em] text-brand-terracotta">
-              Bônus exclusivo
-            </p>
-            <h2 className="mt-4 text-balance text-3xl font-semibold text-brand-navy md:text-5xl">
-              Pack de Templates GPS-C
-            </h2>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#3b3067]">
-              Modelos prontos para roteirizar aulas, vídeos, apresentações e lives com o método
-              GPS-C. Você preenche os espaços em branco — a estrutura já está lá. Aplique no mesmo
-              dia em que receber o acesso.
-            </p>
-            <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-brand-terracotta/35 bg-brand-terracotta/10 px-5 py-2">
-              <span className="text-xs uppercase tracking-[0.18em] text-brand-terracotta">
-                Valor percebido
-              </span>
-              <span className="text-lg font-semibold text-brand-navy">R$ [DADOS REAIS]</span>
-            </div>
-            <p className="mt-3 text-sm text-[#3b3067]/70">Incluso gratuitamente no seu acesso.</p>
-          </Reveal>
-        </Container>
-      </section>
-
       {/* OFERTA */}
       <section id="oferta" className="section-divider bg-[#130d2b] py-20 text-white md:py-28">
         <Container className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
