@@ -3,14 +3,15 @@
 import { motion } from "framer-motion";
 
 const variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 28, filter: "blur(4px)" },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
+    filter: "blur(0px)",
     transition: {
-      duration: 0.7,
+      duration: 0.8,
       delay,
-      ease: [0.22, 1, 0.36, 1]
+      ease: [0.19, 1, 0.22, 1]
     }
   })
 };
@@ -22,7 +23,7 @@ export default function Reveal({ children, className = "", delay = 0, once = tru
       custom={delay}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount: 0.2 }}
+      viewport={{ once, amount: 0.15 }}
       variants={variants}
     >
       {children}

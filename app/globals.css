@@ -2,29 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── CSS CUSTOM PROPERTIES ─────────────────────────────────────── */
 :root {
-  --brand-navy: #201747;
-  --brand-terracotta: #d3451e;
-  --brand-cream: #f1dab2;
-  --brand-white: #ffffff;
-  --brand-ink: #0f0a25;
+  /* Cores primárias */
+  --navy:          #201747;
+  --navy-light:    #2d1f5e;
+  --navy-dark:     #150e30;
+  --navy-surface:  #1a1240;
+  --terracota:     #D3451E;
+  --terracota-hover: #b83516;
+  --terracota-glow:  rgba(211, 69, 30, 0.25);
+  --cream:         #F1DAB2;
+  --cream-dim:     rgba(241, 218, 178, 0.65);
+  --cream-subtle:  rgba(241, 218, 178, 0.15);
+  --cream-faint:   rgba(241, 218, 178, 0.08);
+  --white:         #ffffff;
+
+  /* Timing */
+  --ease-smooth:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce:    cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo:  cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-circ:      cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  --dur-fast:   180ms;
+  --dur-base:   360ms;
+  --dur-slow:   600ms;
+  --dur-slower: 900ms;
+  --dur-reveal: 1100ms;
 }
 
+/* ── BASE ──────────────────────────────────────────────────────── */
 html,
 body {
   overflow-x: hidden;
 }
 
 body {
-  color: var(--brand-ink);
-  background: #f6f1e8;
   font-family: var(--font-titillium), "Titillium Web", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--cream);
+  background-color: var(--navy);
 }
 
 ::selection {
-  background: rgba(211, 69, 30, 0.2);
+  background: rgba(211, 69, 30, 0.25);
+  color: var(--cream);
 }
 
+/* ── AMBIENT BACKGROUND ────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  top: -30vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(211, 69, 30, 0.06) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── TYPOGRAPHY ────────────────────────────────────────────────── */
+h1, h2 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  line-height: 1.05;
+}
+
+h3 {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+}
+
+p {
+  color: var(--cream-dim);
+}
+
+p strong {
+  font-weight: 600;
+  color: var(--cream);
+}
+
+/* ── GRID OVERLAY (hero decoration) ───────────────────────────── */
 .grid-overlay {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
@@ -32,21 +98,258 @@ body {
   background-size: 32px 32px;
 }
 
+/* ── SECTION DIVIDER ───────────────────────────────────────────── */
 .section-divider {
-  border-top: 1px solid rgba(32, 23, 71, 0.14);
+  border-top: 1px solid rgba(241, 218, 178, 0.08);
 }
 
+/* ── GLASS CARD ────────────────────────────────────────────────── */
+.glass-card {
+  backdrop-filter: blur(8px);
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04));
+}
+
+/* ── TEXT BALANCE ──────────────────────────────────────────────── */
 .text-balance {
   text-wrap: balance;
 }
 
-.glass-card {
-  backdrop-filter: blur(6px);
-  background: linear-gradient(130deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
-}
-
+/* ── PLACEHOLDER PATTERN ───────────────────────────────────────── */
 .placeholder-pattern {
   background-image:
-    radial-gradient(circle at 20% 25%, rgba(241, 218, 178, 0.28), transparent 35%),
-    radial-gradient(circle at 80% 75%, rgba(211, 69, 30, 0.15), transparent 35%);
+    radial-gradient(circle at 20% 25%, rgba(241, 218, 178, 0.12), transparent 35%),
+    radial-gradient(circle at 80% 75%, rgba(211, 69, 30, 0.10), transparent 35%);
+}
+
+/* ── SECTION LABELS (eyebrow) ──────────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--terracota);
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 1px;
+  background: var(--terracota);
+  transition: width 0.7s var(--ease-out-expo);
+}
+
+.section-label.line-revealed::before {
+  width: 28px;
+}
+
+/* ── NAVBAR SCROLL-AWARE ───────────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  transition:
+    background var(--dur-slow) var(--ease-smooth),
+    box-shadow var(--dur-slow) var(--ease-smooth),
+    backdrop-filter var(--dur-slow);
+}
+
+.navbar.scrolled {
+  background: rgba(32, 23, 71, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(241, 218, 178, 0.08), 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* ── CTA BUTTON ────────────────────────────────────────────────── */
+.cta-btn {
+  position: relative;
+  overflow: hidden;
+  background: var(--terracota);
+  color: var(--white);
+  font-family: var(--font-titillium), "Titillium Web", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 14px 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transition:
+    background var(--dur-base) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-smooth),
+    box-shadow var(--dur-base) var(--ease-smooth),
+    letter-spacing var(--dur-base) var(--ease-smooth);
+  box-shadow: 0 4px 20px var(--terracota-glow);
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.55s var(--ease-out-expo);
+}
+
+.cta-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.cta-btn:hover {
+  background: var(--terracota-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 30px rgba(211, 69, 30, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.22em;
+}
+
+.cta-btn:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 0 2px 10px var(--terracota-glow);
+  transition-duration: var(--dur-fast);
+}
+
+.cta-btn.cta-primary {
+  animation: ctaPulse 3s ease-in-out infinite;
+}
+
+.cta-btn.cta-primary:hover {
+  animation: none;
+}
+
+/* ── CARD HOVER ────────────────────────────────────────────────── */
+.card-interactive {
+  border: 1px solid var(--cream-subtle);
+  will-change: transform;
+  transition:
+    transform var(--dur-base) var(--ease-out-expo),
+    border-color var(--dur-base) var(--ease-smooth),
+    box-shadow var(--dur-base) var(--ease-smooth),
+    background var(--dur-base) var(--ease-smooth);
+}
+
+.card-interactive:hover {
+  transform: translateY(-6px);
+  border-color: rgba(211, 69, 30, 0.45);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(211, 69, 30, 0.2),
+    inset 0 1px 0 rgba(241, 218, 178, 0.06);
+  background: var(--navy-surface);
+}
+
+/* ── PRICE CARD ────────────────────────────────────────────────── */
+.price-card {
+  animation: priceGlow 4s ease-in-out infinite;
+  border: 1px solid rgba(211, 69, 30, 0.3);
+}
+
+/* ── ACCORDION ─────────────────────────────────────────────────── */
+.accordion-item {
+  border: 1px solid var(--cream-subtle);
+  background: var(--cream-faint);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+/* ── DEPOIMENTO CARD ───────────────────────────────────────────── */
+.testi-card {
+  transition:
+    transform var(--dur-base) var(--ease-out-expo),
+    border-color var(--dur-base),
+    box-shadow var(--dur-base);
+}
+
+.testi-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(211, 69, 30, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(211, 69, 30, 0.15);
+}
+
+/* ── SCROLL REVEAL (data-reveal) ───────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  filter: blur(2px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out-expo),
+    transform var(--dur-slow) var(--ease-out-expo),
+    filter var(--dur-slow) var(--ease-out-expo);
+}
+
+[data-reveal="left"]  { transform: translateX(-40px); }
+[data-reveal="right"] { transform: translateX(40px); }
+[data-reveal="scale"] { transform: scale(0.92); filter: blur(2px); }
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translate(0) scale(1);
+  filter: blur(0);
+}
+
+/* ── KEYFRAMES ─────────────────────────────────────────────────── */
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(211,69,30,0.25); }
+  50%       { box-shadow: 0 4px 36px rgba(211,69,30,0.55), 0 0 0 6px rgba(211,69,30,0.08); }
+}
+
+@keyframes priceGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(211,69,30,0.2), 0 24px 64px rgba(0,0,0,0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(211,69,30,0.5), 0 24px 64px rgba(0,0,0,0.5), 0 0 80px rgba(211,69,30,0.12);
+  }
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(40px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+@keyframes underlineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── HERO SEQUÊNCIA ────────────────────────────────────────────── */
+.hero-label    { animation: heroFadeUp var(--dur-slow)   var(--ease-out-expo) 0.10s both; }
+.hero-headline { animation: heroFadeUp var(--dur-reveal)  var(--ease-out-expo) 0.25s both; }
+.hero-sub      { animation: heroFadeUp var(--dur-slow)   var(--ease-out-expo) 0.40s both; }
+.hero-body     { animation: heroFadeUp var(--dur-slow)   var(--ease-out-expo) 0.55s both; }
+.hero-cta      { animation: heroFadeUp var(--dur-slow)   var(--ease-bounce)   0.70s both; }
+.hero-image    { animation: heroFadeUp var(--dur-reveal)  var(--ease-out-expo) 0.35s both; }
+
+/* ── PERFORMANCE ───────────────────────────────────────────────── */
+.hero-headline,
+.cta-btn,
+.card-interactive,
+.price-card {
+  will-change: transform;
+}
+
+/* ── REDUCED MOTION ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }
