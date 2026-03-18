@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   audience,
   benefits,
@@ -139,6 +139,100 @@ function Accordion({ items, tone = "light" }) {
           </motion.div>
         );
       })}
+    </div>
+  );
+}
+
+function TestimonialCarousel({ items }) {
+  const trackRef = useRef(null);
+  const posRef = useRef(0);
+  const dirRef = useRef(-1);
+  const speedRef = useRef(0.6);
+  const rafRef = useRef(null);
+  const pausedRef = useRef(false);
+
+  const animate = useCallback(() => {
+    const track = trackRef.current;
+    if (!track || pausedRef.current) {
+      rafRef.current = requestAnimationFrame(animate);
+      return;
+    }
+    const halfWidth = track.scrollWidth / 2;
+    posRef.current += dirRef.current * speedRef.current;
+    if (posRef.current <= -halfWidth) posRef.current += halfWidth;
+    if (posRef.current >= 0) posRef.current -= halfWidth;
+    track.style.transform = `translateX(${posRef.current}px)`;
+    rafRef.current = requestAnimationFrame(animate);
+  }, []);
+
+  useEffect(() => {
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [animate]);
+
+  const handleArrow = (dir) => {
+    if (dirRef.current === dir) {
+      speedRef.current = Math.min(speedRef.current + 0.4, 3);
+    } else {
+      speedRef.current = 0.6;
+      dirRef.current = dir;
+    }
+  };
+
+  const doubled = [...items, ...items];
+
+  return (
+    <div className="relative mt-12">
+      {/* Fades laterais */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#f8f1e4] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#f8f1e4] to-transparent" />
+
+      {/* Seta esquerda */}
+      <button
+        onClick={() => handleArrow(1)}
+        onMouseEnter={() => { dirRef.current = 1; speedRef.current = 1.2; }}
+        onMouseLeave={() => { speedRef.current = 0.6; }}
+        className="absolute left-2 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-[#d7c6a7] bg-white shadow-soft transition hover:border-brand-terracotta hover:bg-brand-terracotta hover:text-white text-brand-navy"
+        aria-label="Rolar para a esquerda"
+      >
+        ←
+      </button>
+
+      {/* Seta direita */}
+      <button
+        onClick={() => handleArrow(-1)}
+        onMouseEnter={() => { dirRef.current = -1; speedRef.current = 1.2; }}
+        onMouseLeave={() => { speedRef.current = 0.6; }}
+        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-[#d7c6a7] bg-white shadow-soft transition hover:border-brand-terracotta hover:bg-brand-terracotta hover:text-white text-brand-navy"
+        aria-label="Rolar para a direita"
+      >
+        →
+      </button>
+
+      {/* Track */}
+      <div className="overflow-hidden px-12">
+        <div
+          ref={trackRef}
+          className="flex gap-5 will-change-transform"
+          style={{ width: "max-content" }}
+          onMouseEnter={() => { pausedRef.current = true; }}
+          onMouseLeave={() => { pausedRef.current = false; }}
+        >
+          {doubled.map((item, i) => (
+            <article
+              key={i}
+              className="w-80 flex-shrink-0 rounded-[1.2rem] border border-[#ddcdb0] bg-white p-6 shadow-soft"
+            >
+              <p className="text-base leading-relaxed text-[#34295e]">
+                &ldquo;{item.quote}&rdquo;
+              </p>
+              <p className="mt-5 text-sm font-semibold uppercase tracking-[0.16em] text-brand-terracotta">
+                {item.name}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -423,35 +517,8 @@ export default function LandingPage() {
             eyebrow="O que estão dizendo"
             title={`Quem construiu.\nQuem transformou.`}
           />
-
-          <motion.div
-            className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-            variants={listStagger}
-          >
-            {testimonials.map((item) => (
-              <motion.article
-                key={item.name}
-                variants={listItem}
-                className={`rounded-[1.2rem] border border-[#ddcdb0] bg-white p-6 shadow-soft ${
-                  item.featured ? "md:col-span-2 xl:col-span-1" : ""
-                }`}
-              >
-                <p className="text-base leading-relaxed text-[#34295e]">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
-                <p className="mt-5 text-sm font-semibold uppercase tracking-[0.16em] text-brand-terracotta">
-                  {item.name}
-                </p>
-                {item.role ? (
-                  <p className="mt-1 text-xs text-[#3a2f64]/60">{item.role}</p>
-                ) : null}
-              </motion.article>
-            ))}
-          </motion.div>
         </Container>
+        <TestimonialCarousel items={testimonials} />
       </section>
 
       {/* OS 4 PILARES */}
