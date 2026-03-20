@@ -9,14 +9,25 @@ const titillium = Titillium_Web({
 });
 
 export const metadata = {
-  title: "Arquiteto de Ideias | Diego Knebel",
+  title: "Arquiteto de Ideias · Diego Knebel",
   description:
-    "Transforme conhecimento confuso em comunicacao clara, memoravel e influente com o metodo Arquiteto de Ideias.",
+    "Fale, Convença e Envolva. O método de comunicação estratégica para mentores, líderes e criadores que já superaram o medo de falar, e querem clareza, estrutura e autoridade real.",
+  icons: {
+    icon: "/logos/logo-icone-terracota.png",
+    apple: "/logos/logo-icone-terracota.png"
+  },
+  themeColor: "#201747",
   openGraph: {
-    title: "Arquiteto de Ideias | Diego Knebel",
+    title: "Arquiteto de Ideias · Diego Knebel",
     description:
-      "Uma landing page premium para um treinamento de comunicacao com estrutura, autoridade e clareza.",
-    type: "website"
+      "Fale, Convença e Envolva. O método de comunicação estratégica para mentores e líderes.",
+    type: "website",
+    images: [{ url: "/logos/logo-footer-claro.png", width: 1099, height: 386 }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arquiteto de Ideias · Diego Knebel",
+    images: ["/logos/logo-footer-claro.png"]
   }
 };
 
