@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState, useRef, useEffect, useCallback } from "react";
 import {
   audience,
-  benefits,
   deliverables,
   faq,
   notFor,
@@ -38,41 +37,6 @@ import PrimaryButton from "@/components/ui/PrimaryButton";
 import Reveal from "@/components/ui/Reveal";
 
 const CHECKOUT_URL = "https://payfast.greenn.com.br/qhxpds7/offer/IZ0aT7";
-
-const benefitIcons = [
-  <svg key="benefit-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M4 12h16M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>,
-  <svg key="benefit-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path
-      d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>,
-  <svg key="benefit-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path
-      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>,
-  <svg key="benefit-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>,
-  <svg key="benefit-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <circle cx="12" cy="12" r="10" />
-    <circle cx="12" cy="12" r="6" />
-    <circle cx="12" cy="12" r="2" />
-  </svg>,
-  <svg key="benefit-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path
-      d="M17 2.1l4 4-4 4M3 12.2a9 9 0 0 1 14-7.1M7 22l-4-4 4-4M21 11.8a9 9 0 0 1-14 7.1"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-];
 
 const painIcons = [
   <svg key="pain-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -576,7 +540,7 @@ export default function LandingPage() {
       {/* NAVBAR */}
       <nav className={`navbar px-4 py-3 md:py-4 ${navScrolled ? "scrolled" : ""}`}>
         <Container>
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center justify-between gap-3 md:gap-6">
             <span className="navbar-logo">
               <img
                 src="/logos/logo-navbar.png"
@@ -587,7 +551,7 @@ export default function LandingPage() {
                 loading="eager"
               />
             </span>
-            <PrimaryButton className="hidden md:inline-flex" href={CHECKOUT_URL}>
+            <PrimaryButton className="navbar-cta" href={CHECKOUT_URL}>
               Quero garantir minha vaga
             </PrimaryButton>
           </div>
@@ -648,7 +612,7 @@ export default function LandingPage() {
                 className="hero-photo"
               />
               <motion.div
-                className="glass-card absolute -left-8 top-12 rounded-2xl border border-brand-cream/15 p-4 md:p-5"
+                className="glass-card hero-floating-card hero-floating-card--top absolute -left-8 top-12 rounded-2xl border border-brand-cream/15 p-4 md:p-5"
                 animate={{ y: [0, -7, 0] }}
                 transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -660,7 +624,7 @@ export default function LandingPage() {
                 </p>
               </motion.div>
               <motion.div
-                className="glass-card absolute -bottom-8 right-5 rounded-2xl border border-brand-cream/15 p-4 md:p-5"
+                className="glass-card hero-floating-card hero-floating-card--bottom absolute -bottom-8 right-5 rounded-2xl border border-brand-cream/15 p-4 md:p-5"
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -742,18 +706,6 @@ export default function LandingPage() {
         </Container>
       </section>
 
-      {/* QUEBRA DE CRENÇA */}
-      <section id="quebra-crenca" className="section-divider bg-brand-navy-dark py-20 md:py-28">
-        <Container>
-          <SectionTitle
-            eyebrow="Quebra de crença"
-            title="Falar mais, falar bonito ou falar difícil não resolve."
-            description="Autoridade real nasce quando sua mensagem é compreendida com precisão e sentida com força."
-          />
-
-        </Container>
-      </section>
-
       {/* A SOLUÇÃO */}
       <section id="solucao" className="section-divider solution-section py-24 md:py-32">
         <Container className="grid items-center gap-12 lg:grid-cols-[1.03fr_0.97fr]">
@@ -801,31 +753,31 @@ export default function LandingPage() {
         </Container>
       </section>
 
-      {/* BENEFÍCIOS */}
-      <section id="beneficios" className="section-divider section--inv benefits-section py-24 md:py-32">
+      {/* FECHAMENTO EM DESTAQUE */}
+      <section id="fechamento" className="section-divider section--inv closing-highlight py-24 md:py-32">
         <Container>
-          <Reveal>
-            <p className="section-label">Resultados práticos, emocionais e estratégicos</p>
-            <h2 className="mt-4 text-balance text-3xl font-bold uppercase md:text-5xl">
-              Cada etapa do método foi desenhada para elevar
-              sua clareza, sua presença e seu poder de influência.
+          <Reveal className="mx-auto max-w-4xl text-center">
+            <p className="section-label justify-center">A decisão é agora</p>
+            <h2 className="closing-highlight__title mt-4 text-balance text-4xl font-black uppercase leading-tight md:text-6xl">
+              Seu conhecimento merece
+              <br />
+              <span className="text-brand-terracotta">uma forma à altura.</span>
             </h2>
+            <p className="closing-highlight__text mx-auto mt-6 max-w-3xl text-balance text-xl font-light leading-relaxed">
+              Você pode continuar tentando explicar o seu oceano com gotas.
+              <br className="hidden md:block" />
+              Ou pode aprender a construir a ponte que leva o seu público até você.
+              <br className="hidden md:block" />
+              <br className="hidden md:block" />
+              O mundo está em silêncio esperando pelo seu comando.
+            </p>
+            <div className="mt-10">
+              <PrimaryButton href={CHECKOUT_URL}>Quero minha vaga no Arquiteto de Ideias</PrimaryButton>
+            </div>
+            <p className="closing-highlight__meta mt-5 text-sm font-light">
+              12x de R$ 15,11&nbsp;·&nbsp;ou R$ 147,00 à vista&nbsp;·&nbsp;Garantia de 7 dias
+            </p>
           </Reveal>
-
-          <div className="benefits-grid mt-12" data-reveal>
-            {benefits.map((benefit, index) => (
-              <article key={benefit.title} className="benefit-card">
-                <span className="benefit-card__num" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div className="benefit-card__icon" aria-hidden="true">
-                  {benefitIcons[index]}
-                </div>
-                <h3 className="benefit-card__title">{benefit.title}</h3>
-                <p className="benefit-card__text">{benefit.description}</p>
-              </article>
-            ))}
-          </div>
         </Container>
       </section>
 
@@ -1286,34 +1238,6 @@ export default function LandingPage() {
             </p>
             <p className="mt-4 text-lg font-bold uppercase tracking-wide text-brand-terracotta">
               O risco é todo nosso.
-            </p>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* FECHAMENTO */}
-      <section id="fechamento" className="section-divider bg-brand-navy-dark py-20 md:py-28">
-        <Container>
-          <Reveal className="mx-auto max-w-4xl text-center">
-            <p className="section-label justify-center">A decisão é agora</p>
-            <h2 className="mt-4 text-balance text-4xl font-black uppercase leading-tight text-brand-cream md:text-6xl">
-              Seu conhecimento merece
-              <br />
-              <span className="text-brand-terracotta">uma forma à altura.</span>
-            </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-balance text-xl font-light leading-relaxed text-brand-cream/60">
-              Você pode continuar tentando explicar o seu oceano com gotas.
-              <br className="hidden md:block" />
-              Ou pode aprender a construir a ponte que leva o seu público até você.
-              <br className="hidden md:block" />
-              <br className="hidden md:block" />
-              O mundo está em silêncio esperando pelo seu comando.
-            </p>
-            <div className="mt-10">
-              <PrimaryButton href={CHECKOUT_URL}>Quero minha vaga no Arquiteto de Ideias</PrimaryButton>
-            </div>
-            <p className="mt-5 text-sm font-light text-brand-cream/40">
-              12x de R$ 15,11&nbsp;·&nbsp;ou R$ 147,00 à vista&nbsp;·&nbsp;Garantia de 7 dias
             </p>
           </Reveal>
         </Container>

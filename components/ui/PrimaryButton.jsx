@@ -4,7 +4,7 @@ export default function PrimaryButton({ children, href = "#oferta", className = 
       href={href}
       className={`cta-btn ${primary ? "cta-primary" : ""} ${className}`}
     >
-      {children}
+      <span className="cta-btn__label">{children}</span>
     </a>
   );
 }
