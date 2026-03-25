@@ -15,15 +15,115 @@ import {
 
 /* ── TESTIMONIAL MEDIA ITEMS ────────────────────────────────────── */
 const testimonialMedia = [
-  { type: "photo", src: "/depoimentos/01-depoimento-foto.jpg",           alt: "Depoimento de aluno. Arquiteto de Ideias" },
-  { type: "video", src: "/depoimentos/02-depoimento-video.mp4",          alt: "" },
-  { type: "video", src: "/depoimentos/03-depoimento-video.mp4",          alt: "" },
-  { type: "photo", src: "/depoimentos/04-depoimento-whatsapp.jpg",       alt: "Depoimento via WhatsApp. Arquiteto de Ideias" },
-  { type: "photo", src: "/depoimentos/05-depoimento-story-luciana.jpg",  alt: "Depoimento Luciana. Arquiteto de Ideias" },
+  {
+    type: "photo",
+    src: "/depoimentos/testimonial-photo-1.jpg",
+    alt: "Depoimento em foto de aluno. Arquiteto de Ideias"
+  },
+  { type: "video", src: "/depoimentos/02-depoimento-video.mp4", alt: "Vídeo de depoimento 1" },
+  {
+    type: "photo",
+    src: "/depoimentos/testimonial-whatsapp-conversa.jpg",
+    alt: "Depoimento em conversa de WhatsApp"
+  },
+  { type: "video", src: "/depoimentos/03-depoimento-video.mp4", alt: "Vídeo de depoimento 2" },
+  {
+    type: "photo",
+    src: "/depoimentos/testimonial-story-luciana.jpg",
+    alt: "Depoimento em story da Luciana"
+  }
 ];
 import Container from "@/components/ui/Container";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import Reveal from "@/components/ui/Reveal";
+
+const CHECKOUT_URL = "https://payfast.greenn.com.br/qhxpds7/offer/IZ0aT7";
+
+const benefitIcons = [
+  <svg key="benefit-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M4 12h16M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>,
+  <svg key="benefit-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path
+      d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>,
+  <svg key="benefit-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path
+      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>,
+  <svg key="benefit-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>,
+  <svg key="benefit-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
+  </svg>,
+  <svg key="benefit-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path
+      d="M17 2.1l4 4-4 4M3 12.2a9 9 0 0 1 14-7.1M7 22l-4-4 4-4M21 11.8a9 9 0 0 1-14 7.1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+];
+
+const painIcons = [
+  <svg key="pain-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path
+      d="M9 3h6m-3 0v3m-6 7a6 6 0 1 1 12 0v2a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4v-2z"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>,
+  <svg key="pain-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M3 12h5l3 3 4-6 2 3h4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>,
+  <svg key="pain-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path
+      d="M4 12c2.5-3.5 5.2-5.3 8-5.3s5.5 1.8 8 5.3c-2.5 3.5-5.2 5.3-8 5.3S6.5 15.5 4 12z"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <circle cx="12" cy="12" r="1.8" />
+  </svg>,
+  <svg key="pain-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M4 18h16M6 14l2-8h8l2 8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+];
+
+const audienceIcons = {
+  Mentor: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 12h6" strokeLinecap="round" />
+    </svg>
+  ),
+  Especialista: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 3l2.7 5.47L21 9.3l-4.5 4.4L17.6 20 12 17l-5.6 3 1.1-6.3L3 9.3l6.3-.83L12 3z" />
+    </svg>
+  ),
+  "Criador de Conteúdo": (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="3" y="4" width="18" height="16" rx="2.5" />
+      <path d="M10 9.5l5 2.5-5 2.5v-5z" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  "Líder": (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 3v9" strokeLinecap="round" />
+      <path d="M8.5 7.5L12 3l3.5 4.5" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="4" y="13" width="16" height="8" rx="2" />
+    </svg>
+  )
+};
 
 /* ── ANIMATION VARIANTS ─────────────────────────────────────────── */
 const listStagger = {
@@ -82,13 +182,15 @@ function Accordion({ items }) {
                 {item.question}
               </span>
               <span
-                className={`grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border text-xl transition-all duration-300 ${
+                className={`accordion-toggle ${isOpen ? "is-open" : ""} ${
                   isOpen
-                    ? "border-brand-terracotta text-brand-terracotta rotate-45"
+                    ? "border-brand-terracotta text-brand-terracotta"
                     : "border-brand-cream/25 text-brand-cream/60"
                 }`}
+                aria-hidden="true"
               >
-                +
+                <span className="accordion-toggle-line accordion-toggle-line--h" />
+                <span className="accordion-toggle-line accordion-toggle-line--v" />
               </span>
             </button>
 
@@ -182,7 +284,7 @@ function TestimonialCarousel({ items, initialDir = -1, speed = 0.6 }) {
       <div className="overflow-hidden px-12">
         <div
           ref={trackRef}
-          className="flex gap-5 will-change-transform"
+          className="flex items-stretch gap-6 will-change-transform"
           style={{ width: "max-content" }}
           onMouseEnter={() => { pausedRef.current = true; }}
           onMouseLeave={() => { pausedRef.current = false; }}
@@ -340,6 +442,9 @@ function VideoTestimonialCarousel({ items, inverted = false }) {
                     alt={item.alt}
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    onError={(event) => {
+                      event.currentTarget.src = "/images/galeria-evento-01.jpg";
+                    }}
                   />
                 </div>
               </div>
@@ -420,6 +525,7 @@ function AnimatedCounter({ target, suffix = "" }) {
 /* ── MAIN COMPONENT ─────────────────────────────────────────────── */
 export default function LandingPage() {
   const [navScrolled, setNavScrolled] = useState(false);
+  const [activeModule, setActiveModule] = useState(0);
 
   useEffect(() => {
     const onScroll = () => setNavScrolled(window.scrollY > 60);
@@ -467,13 +573,8 @@ export default function LandingPage() {
   return (
     <main className="bg-brand-navy">
 
-      {/* TOPBAR */}
-      <div className="bg-brand-navy-dark py-2 text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-cream/80">
-        Módulo 1 já disponível&nbsp;&nbsp;·&nbsp;&nbsp;Acesso imediato após a inscrição
-      </div>
-
       {/* NAVBAR */}
-      <nav className={`navbar px-4 py-4 ${navScrolled ? "scrolled" : ""}`}>
+      <nav className={`navbar px-4 py-3 md:py-4 ${navScrolled ? "scrolled" : ""}`}>
         <Container>
           <div className="flex items-center justify-between gap-6">
             <span className="navbar-logo">
@@ -486,7 +587,7 @@ export default function LandingPage() {
                 loading="eager"
               />
             </span>
-            <PrimaryButton className="hidden md:inline-flex" href="#oferta">
+            <PrimaryButton className="hidden md:inline-flex" href={CHECKOUT_URL}>
               Quero garantir minha vaga
             </PrimaryButton>
           </div>
@@ -535,7 +636,7 @@ export default function LandingPage() {
                 Você fala, mas as pessoas não chegam onde você quer.
               </p>
               <div className="hero-cta mt-10">
-                <PrimaryButton href="#oferta">Quero construir minha clareza</PrimaryButton>
+                <PrimaryButton href={CHECKOUT_URL}>Quero construir minha clareza</PrimaryButton>
                 <p className="cta-microcopy mt-3">Acesso vitalício · Garantia de 7 dias</p>
               </div>
             </div>
@@ -589,10 +690,11 @@ export default function LandingPage() {
 
           <ul className="pain-list mt-10">
             {painSignals.map((signal, i) => {
-              const icons = ["🧠", "🔇", "📡", "🏗️"];
               return (
                 <li key={signal} className="pain-list__item" data-reveal>
-                  <span className="pain-list__icon" aria-hidden="true">{icons[i]}</span>
+                  <span className="pain-list__icon" aria-hidden="true">
+                    {painIcons[i]}
+                  </span>
                   <span className="pain-list__text">{signal}</span>
                 </li>
               );
@@ -653,37 +755,54 @@ export default function LandingPage() {
       </section>
 
       {/* A SOLUÇÃO */}
-      <section id="solucao" className="section-divider section--inv py-20 md:py-28">
-        <Container>
+      <section id="solucao" className="section-divider solution-section py-24 md:py-32">
+        <Container className="grid items-center gap-12 lg:grid-cols-[1.03fr_0.97fr]">
           <Reveal>
             <p className="section-label">A solução</p>
-            <h2 className="mt-4 text-balance text-3xl font-black uppercase md:text-5xl">
+            <h2 className="mt-4 text-balance text-3xl font-black uppercase text-brand-cream md:text-5xl">
               Falar bem não é um dom.
               <br />
               <em className="not-italic text-brand-terracotta">É uma engenharia.</em>
             </h2>
             <div className="mt-8 max-w-3xl space-y-4">
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-brand-cream/72">
                 Catedrais não ficam de pé por séculos porque alguém foi criativo.
                 Elas ficam porque alguém calculou as vigas antes de pintar os vitrais.
                 A sua comunicação funciona igual.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-brand-cream/72">
                 O Arquiteto de Ideias é o treinamento que constrói a estrutura invisível
                 por trás de cada fala, de um Reels de 60 segundos a uma masterclass de
                 2 horas, para que você nunca mais se perca no meio do caminho.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-brand-cream/72">
                 Não é sobre falar difícil. Não é sobre ser performático.{" "}
-                <strong>É sobre ser inesquecível.</strong>
+                <strong className="text-brand-cream">É sobre ser inesquecível.</strong>
               </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.08}>
+            <div className="solution-portrait-card">
+              <img
+                src="/images/diego-engenharia.jpg"
+                alt="Diego Knebel em retrato editorial premium"
+                className="solution-portrait"
+                onError={(event) => {
+                  event.currentTarget.src = "/images/hero-principal.jpg";
+                }}
+              />
+              <div className="solution-portrait-caption">
+                <span>Retrato editorial</span>
+                <p>Autoridade tranquila. Clareza estratégica.</p>
+              </div>
             </div>
           </Reveal>
         </Container>
       </section>
 
       {/* BENEFÍCIOS */}
-      <section id="beneficios" className="section-divider section--inv py-20 md:py-28">
+      <section id="beneficios" className="section-divider section--inv benefits-section py-24 md:py-32">
         <Container>
           <Reveal>
             <p className="section-label">Resultados práticos, emocionais e estratégicos</p>
@@ -694,74 +813,17 @@ export default function LandingPage() {
           </Reveal>
 
           <div className="benefits-grid mt-12" data-reveal>
-            {[
-              {
-                num: "01",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ),
-                title: "Mensagem com direção",
-                text: "Construa narrativas com começo, meio e fim para conduzir atenção e gerar entendimento imediato."
-              },
-              {
-                num: "02",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ),
-                title: "Presença sem agressividade",
-                text: "Comunique com firmeza e segurança, mantendo elegância e autenticidade em qualquer contexto."
-              },
-              {
-                num: "03",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ),
-                title: "Retórica aplicada",
-                text: "Use analogias, silêncio e perguntas estratégicas para tornar sua fala irresistível sem artificialidade."
-              },
-              {
-                num: "04",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ),
-                title: "Improviso estruturado",
-                text: "Nunca mais fique em branco. Aprenda a montar respostas poderosas em segundos com memória modular."
-              },
-              {
-                num: "05",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-                  </svg>
-                ),
-                title: "Autoridade percebida",
-                text: "Seja reconhecido pela forma como organiza ideias e conduz conversas, mesmo antes de abrir a boca."
-              },
-              {
-                num: "06",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M17 2.1l4 4-4 4M3 12.2a9 9 0 0 1 14-7.1M7 22l-4-4 4-4M21 11.8a9 9 0 0 1-14 7.1" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ),
-                title: "Comunicação com método",
-                text: "Pare de depender de inspiração. Tenha um sistema replicável para qualquer situação: ao vivo, em vídeo, em reunião."
-              }
-            ].map((b) => (
-              <div key={b.num} className="benefit-card">
-                <span className="benefit-card__num" aria-hidden="true">{b.num}</span>
-                <div className="benefit-card__icon" aria-hidden="true">{b.icon}</div>
-                <h3 className="benefit-card__title">{b.title}</h3>
-                <p className="benefit-card__text">{b.text}</p>
-              </div>
+            {benefits.map((benefit, index) => (
+              <article key={benefit.title} className="benefit-card">
+                <span className="benefit-card__num" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="benefit-card__icon" aria-hidden="true">
+                  {benefitIcons[index]}
+                </div>
+                <h3 className="benefit-card__title">{benefit.title}</h3>
+                <p className="benefit-card__text">{benefit.description}</p>
+              </article>
             ))}
           </div>
         </Container>
@@ -798,17 +860,16 @@ export default function LandingPage() {
               <motion.article
                 key={pillar.id}
                 variants={listItem}
-                className="card-interactive rounded-[1.4rem] bg-brand-navy-surface p-7"
+                className={`pillar-card pillar-card--${pillar.id}`}
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-terracotta">
-                  Pilar {pillar.id} · {pillar.letter} · {pillar.letterLabel}
-                </p>
-                <h3 className="mt-3 text-xl font-bold uppercase tracking-wide text-brand-cream">
-                  {pillar.title}
-                </h3>
-                <p className="mt-4 text-base font-light leading-relaxed text-brand-cream/60">
-                  {pillar.description}
-                </p>
+                <div className="pillar-card__top">
+                  <span className="pillar-card__id">Pilar {pillar.id}</span>
+                  <span className="pillar-card__meta">
+                    {pillar.letter} · {pillar.letterLabel}
+                  </span>
+                </div>
+                <h3 className="pillar-card__title">{pillar.title}</h3>
+                <p className="pillar-card__text">{pillar.description}</p>
               </motion.article>
             ))}
           </motion.div>
@@ -819,11 +880,10 @@ export default function LandingPage() {
       <section id="posicionamento" className="section-divider bg-brand-navy py-24 md:py-36">
         <Container>
           <Reveal className="mx-auto max-w-5xl text-center">
-            <p className="text-balance text-4xl font-black uppercase leading-tight text-brand-cream md:text-6xl lg:text-7xl">
+            <p className="manifesto-hover text-balance text-4xl font-black uppercase leading-tight text-brand-cream md:text-6xl lg:text-7xl">
               Não é sobre parecer inteligente.
               <br className="hidden md:block" />
-              É sobre ser{" "}
-              <span className="text-brand-terracotta">impossível de ignorar.</span>
+              É sobre ser <span className="manifesto-hover__accent">impossível de ignorar.</span>
             </p>
             <p className="mx-auto mt-8 max-w-3xl text-balance text-xl font-light leading-relaxed text-brand-cream/60">
               Quando sua mensagem combina profundidade e clareza,
@@ -864,70 +924,56 @@ export default function LandingPage() {
           <div className="modules-layout">
 
             <div className="modules-list">
+              {deliverables.modules.map((module, index) => {
+                const isOpen = activeModule === index;
+                const isBonus = /b[oô]nus/i.test(module.title);
+                const splitTitle = module.title.split("·");
+                const moduleTag = splitTitle[0]?.trim() || `Módulo ${String(index + 1).padStart(2, "0")}`;
+                const moduleName = splitTitle.slice(1).join("·").trim() || module.title;
 
-              <div className="module-item" data-reveal>
-                <div className="module-item__header">
-                  <span className="module-item__tag">Módulo 01</span>
-                  <h3 className="module-item__title">O Fim da Encheção de Linguiça</h3>
-                </div>
-                <ul className="module-item__aulas">
-                  <li><span className="aula-num">01</span>A Maldição do Conhecimento: por que o seu saber te sabota</li>
-                  <li><span className="aula-num">02</span>Mapa Mental vs. Mapa Verbal: pensar é uma teia, falar é uma linha</li>
-                  <li><span className="aula-num">03</span>O Objetivo Único: o tiro de sniper que não deixa ninguém para trás</li>
-                  <li><span className="aula-num">04</span>Como falar a língua de quem está te ouvindo</li>
-                </ul>
-              </div>
+                return (
+                  <article
+                    key={module.title}
+                    className={`module-accordion-item ${isOpen ? "is-open" : ""} ${
+                      isBonus ? "is-bonus" : ""
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      className="module-accordion-trigger"
+                      onClick={() => setActiveModule(isOpen ? -1 : index)}
+                      aria-expanded={isOpen}
+                    >
+                      <div className="module-item__header">
+                        <span className={`module-item__tag ${isBonus ? "module-item__tag--bonus" : ""}`}>
+                          {moduleTag}
+                        </span>
+                        <h3 className="module-item__title">{moduleName}</h3>
+                      </div>
+                      <span className={`module-arrow ${isOpen ? "is-open" : ""}`} aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                    </button>
 
-              <div className="module-item" data-reveal>
-                <div className="module-item__header">
-                  <span className="module-item__tag">Módulo 02</span>
-                  <h3 className="module-item__title">O Esqueleto da Mensagem</h3>
-                </div>
-                <ul className="module-item__aulas">
-                  <li><span className="aula-num">05</span>O método GPS-C: a viga que sustenta qualquer fala</li>
-                  <li><span className="aula-num">06</span>Storytelling em 3 minutos: os 4 atos que abrem o coração</li>
-                  <li><span className="aula-num">07</span>Roteiros para vídeos curtos: Reels e TikTok com profundidade real</li>
-                  <li><span className="aula-num">08</span>Roteiros para aulas longas: sem perder o ritmo em 90 minutos</li>
-                </ul>
-              </div>
-
-              <div className="module-item" data-reveal>
-                <div className="module-item__header">
-                  <span className="module-item__tag">Módulo 03</span>
-                  <h3 className="module-item__title">A Caixa de Ferramentas da Retórica</h3>
-                </div>
-                <ul className="module-item__aulas">
-                  <li><span className="aula-num">09</span>Gatilhos de atenção: como sequestrar a mente em 7 segundos</li>
-                  <li><span className="aula-num">10</span>Analogias e metáforas: o Cavalo de Troia do conhecimento</li>
-                  <li><span className="aula-num">11</span>O poder do silêncio: a moldura que dá peso às suas palavras</li>
-                  <li><span className="aula-num">12</span>A arte de fazer perguntas: transformar monólogo em movimento</li>
-                </ul>
-              </div>
-
-              <div className="module-item" data-reveal>
-                <div className="module-item__header">
-                  <span className="module-item__tag">Módulo 04</span>
-                  <h3 className="module-item__title">O Domínio do Imprevisto</h3>
-                </div>
-                <ul className="module-item__aulas">
-                  <li><span className="aula-num">13</span>Improviso estruturado: as peças de LEGO que nunca falham</li>
-                  <li><span className="aula-num">14</span>Ler a sala: detectar tédio e mudar a rota em pleno voo</li>
-                  <li><span className="aula-num">15</span>Perguntas difíceis: o Aikido verbal que transforma ataque em autoridade</li>
-                  <li><span className="aula-num">16</span>Da técnica à influência: quando a estrutura vira instinto</li>
-                </ul>
-              </div>
-
-              <div className="module-item module-item--bonus" data-reveal>
-                <div className="module-item__header">
-                  <span className="module-item__tag module-item__tag--bonus">Aula Bônus</span>
-                  <h3 className="module-item__title">O Trono Vazio</h3>
-                </div>
-                <ul className="module-item__aulas">
-                  <li><span className="aula-num aula-num--bonus">✦</span>O que separa o Arquiteto do Líder de Comando</li>
-                  <li><span className="aula-num aula-num--bonus">✦</span>A Semiótica do Poder: como sua imagem comunica antes da sua voz</li>
-                  <li><span className="aula-num aula-num--bonus">✦</span>O convite para o próximo nível</li>
-                </ul>
-              </div>
+                    <div className={`module-accordion-panel ${isOpen ? "is-open" : ""}`}>
+                      <div className="module-accordion-panel-inner">
+                        <ul className="module-item__aulas">
+                          {module.lessons.map((lesson, lessonIndex) => (
+                            <li key={lesson}>
+                              <span className={`aula-num ${isBonus ? "aula-num--bonus" : ""}`}>
+                                {isBonus ? "✦" : String(lessonIndex + 1).padStart(2, "0")}
+                              </span>
+                              {lesson}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
 
             </div>
 
@@ -935,34 +981,17 @@ export default function LandingPage() {
               <div className="extras-card">
                 <span className="extras-card__label">Bônus e ativos inclusos</span>
                 <ul className="extras-list">
-                  <li className="extras-list__item">
-                    <span className="extras-check" aria-hidden="true">✓</span>
-                    <div>
-                      <strong>Biblioteca de exemplos comentados</strong>
-                      <span>Analogias e ganchos reais para usar imediatamente</span>
-                    </div>
-                  </li>
-                  <li className="extras-list__item">
-                    <span className="extras-check" aria-hidden="true">✓</span>
-                    <div>
-                      <strong>Plano de treino semanal guiado</strong>
-                      <span>Estrutura de prática para sair do curso aplicando</span>
-                    </div>
-                  </li>
-                  <li className="extras-list__item">
-                    <span className="extras-check" aria-hidden="true">✓</span>
-                    <div>
-                      <strong>Acesso à área de membros</strong>
-                      <span>Navegação por módulo com progresso salvo</span>
-                    </div>
-                  </li>
-                  <li className="extras-list__item">
-                    <span className="extras-check" aria-hidden="true">✓</span>
-                    <div>
-                      <strong>Suporte</strong>
-                      <span>Canal direto para dúvidas durante o curso</span>
-                    </div>
-                  </li>
+                  {deliverables.extras.map((extra) => (
+                    <li key={extra} className="extras-list__item">
+                      <span className="extras-check" aria-hidden="true">
+                        ✓
+                      </span>
+                      <div>
+                        <strong>{extra.split("(")[0].trim()}</strong>
+                        <span>{extra.includes("(") ? extra.split("(")[1].replace(")", "") : "Incluído no treinamento premium."}</span>
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -982,17 +1011,17 @@ export default function LandingPage() {
           </h2>
 
           <div className="forwho-is" data-reveal>
-            {[
-              { num: "01", role: "Mentor", text: "Você domina o seu assunto, mas suas aulas às vezes deixam o aluno perdido. Você quer que cada palavra sua seja um degrau claro para quem está começando." },
-              { num: "02", role: "Especialista", text: "Você tem anos de experiência que ninguém aproveita porque você ainda não aprendeu a traduzir o que sabe para quem precisa saber." },
-              { num: "03", role: "Criador de Conteúdo", text: "Seus vídeos estão tecnicamente bons, mas faltam estrutura e impacto. Você quer parar de improvisar e começar a construir." },
-              { num: "04", role: "Líder", text: "Você apresenta projetos, conduz reuniões, lidera equipes. E sente que o que você comunica raramente chega com a força que você pretendia." }
-            ].map((item) => (
-              <div key={item.num} className="forwho-card">
-                <div className="forwho-card__num" aria-hidden="true">{item.num}</div>
+            {audience.map((item) => (
+              <div key={item.id} className="forwho-card">
+                <div className="forwho-card__num" aria-hidden="true">{item.id}</div>
                 <div className="forwho-card__body">
-                  <h3 className="forwho-card__role">{item.role}</h3>
-                  <p className="forwho-card__text">{item.text}</p>
+                  <h3 className="forwho-card__role">
+                    <span className="forwho-card__icon" aria-hidden="true">
+                      {audienceIcons[item.role]}
+                    </span>
+                    {item.role}
+                  </h3>
+                  <p className="forwho-card__text">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -1003,11 +1032,7 @@ export default function LandingPage() {
           </div>
 
           <div className="forwho-not" data-reveal>
-            {[
-              "Busca fórmulas mágicas sem compromisso com prática real.",
-              "Quer apenas parecer comunicativo sem mudar a estrutura do pensamento.",
-              "Espera transformar a comunicação sem aplicar os exercícios de cada módulo."
-            ].map((text) => (
+            {notFor.map((text) => (
               <div key={text} className="notfor-item">
                 <span className="notfor-item__x" aria-hidden="true">✕</span>
                 <p className="notfor-item__text">{text}</p>
@@ -1137,11 +1162,9 @@ export default function LandingPage() {
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             <Reveal>
-              <div className="h-full rounded-[1.3rem] border border-brand-cream/10 bg-brand-navy-surface p-7">
-                <p className="section-label" style={{ color: "rgba(241,218,178,0.4)" }}>
-                  Antes
-                </p>
-                <p className="mt-4 text-2xl font-light italic leading-relaxed text-brand-cream/50">
+              <div className="technique-card technique-card--before">
+                <p className="technique-card__label">Antes</p>
+                <p className="mt-4 text-2xl font-light italic leading-relaxed text-brand-cream/42">
                   &ldquo;Eu queria compartilhar algumas ideias que talvez possam te ajudar a
                   melhorar a sua comunicação.&rdquo;
                 </p>
@@ -1149,8 +1172,8 @@ export default function LandingPage() {
             </Reveal>
 
             <Reveal delay={0.12}>
-              <div className="h-full rounded-[1.3rem] border border-brand-terracotta/40 bg-brand-terracotta/8 p-7">
-                <p className="section-label">Depois</p>
+              <div className="technique-card technique-card--after">
+                <p className="technique-card__label">Depois</p>
                 <p className="mt-4 text-2xl font-semibold italic leading-relaxed text-brand-cream">
                   &ldquo;Se você quer ser lembrado pelo que sabe, precisa primeiro ser compreendido
                   pelo que diz.&rdquo;
@@ -1221,12 +1244,12 @@ export default function LandingPage() {
               <p className="section-label">Condição de lançamento</p>
               <div className="price-installment mt-5">
                 <span className="price-installment__times">12x de</span>
-                <span className="price-installment__value">R$&nbsp;3,80</span>
+                <span className="price-installment__value">R$&nbsp;15,11</span>
               </div>
-              <p className="price-lump">ou R$ 37,00 à vista</p>
+              <p className="price-lump">ou R$ 147,00 à vista</p>
 
               <div className="mt-7 grid gap-3">
-                <PrimaryButton className="w-full" href="#comprar">
+                <PrimaryButton className="w-full" href={CHECKOUT_URL}>
                   Garantir minha inscrição
                 </PrimaryButton>
                 <a
@@ -1287,10 +1310,10 @@ export default function LandingPage() {
               O mundo está em silêncio esperando pelo seu comando.
             </p>
             <div className="mt-10">
-              <PrimaryButton href="#oferta">Quero minha vaga no Arquiteto de Ideias</PrimaryButton>
+              <PrimaryButton href={CHECKOUT_URL}>Quero minha vaga no Arquiteto de Ideias</PrimaryButton>
             </div>
             <p className="mt-5 text-sm font-light text-brand-cream/40">
-              R$ 37&nbsp;·&nbsp;Acesso vitalício&nbsp;·&nbsp;Garantia de 7 dias
+              12x de R$ 15,11&nbsp;·&nbsp;ou R$ 147,00 à vista&nbsp;·&nbsp;Garantia de 7 dias
             </p>
           </Reveal>
         </Container>
