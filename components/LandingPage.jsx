@@ -764,9 +764,6 @@ export default function LandingPage() {
               <span className="text-brand-terracotta">uma forma à altura.</span>
             </h2>
             <p className="closing-highlight__text mx-auto mt-6 max-w-3xl text-balance text-xl font-light leading-relaxed">
-              Você pode continuar tentando explicar o seu oceano com gotas ou pode aprender a construir a ponte que leva o seu público até você.
-            </p>
-            <p className="closing-highlight__text mx-auto mt-4 md:mt-5 max-w-3xl text-balance text-xl font-light leading-relaxed">
               Você pode continuar tentando explicar o seu oceano com gotas.
               <br className="hidden md:block" />
               Ou pode aprender a construir a ponte que leva o seu público até você.
@@ -1209,7 +1206,9 @@ export default function LandingPage() {
                   Garantir minha inscrição
                 </PrimaryButton>
                 <a
-                  href="#contato"
+                  href="https://wa.me/5545999753768?text=Ol%C3%A1!%20Estava%20na%20p%C3%A1gina%20do%20Arquit%C3%A9to%20de%20Id%C3%A9ias%2C%20curso%20do%20Diego%20Knebel%2C%20falo%20com%20a%20equipe%20de%20suporte%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex w-full items-center justify-center rounded-full border border-brand-cream/25 px-7 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-brand-cream/70 transition-all hover:border-brand-cream/50 hover:text-brand-cream"
                 >
                   Falar com a equipe
