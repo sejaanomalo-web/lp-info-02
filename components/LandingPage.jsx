@@ -764,11 +764,14 @@ export default function LandingPage() {
               <span className="text-brand-terracotta">uma forma à altura.</span>
             </h2>
             <p className="closing-highlight__text mx-auto mt-6 max-w-3xl text-balance text-xl font-light leading-relaxed">
+              Você pode continuar tentando explicar o seu oceano com gotas ou pode aprender a construir a ponte que leva o seu público até você.
+            </p>
+            <p className="closing-highlight__text mx-auto mt-4 md:mt-5 max-w-3xl text-balance text-xl font-light leading-relaxed">
               Você pode continuar tentando explicar o seu oceano com gotas.
               <br className="hidden md:block" />
               Ou pode aprender a construir a ponte que leva o seu público até você.
-              <br className="hidden md:block" />
-              <br className="hidden md:block" />
+            </p>
+            <p className="closing-highlight__text mx-auto mt-3 md:mt-5 max-w-3xl text-balance text-xl font-light leading-relaxed">
               O mundo está em silêncio esperando pelo seu comando.
             </p>
             <div className="mt-10">
@@ -837,8 +840,9 @@ export default function LandingPage() {
               <br className="hidden md:block" />
               É sobre ser <span className="manifesto-hover__accent">impossível de ignorar.</span>
             </p>
-            <p className="mx-auto mt-8 max-w-3xl text-balance text-xl font-light leading-relaxed text-brand-cream/60">
+            <p className="mx-auto mt-8 max-w-3xl text-balance text-xl font-light leading-[1.8] md:leading-relaxed text-brand-cream/60">
               Quando sua mensagem combina profundidade e clareza,
+              <span className="block h-1 md:hidden" aria-hidden="true" />
               <br className="hidden md:block" />
               sua presença deixa de competir por atenção
               <br className="hidden md:block" />e passa a{" "}
@@ -1057,10 +1061,10 @@ export default function LandingPage() {
             </h2>
             <div className="mt-6 space-y-4">
               {[
-                "Há anos Diego estuda uma pergunta que ninguém pergunta alto: por que especialistas brilhantes são ignorados enquanto comunicadores mediocres são seguidos?",
-                "A resposta não estava no carisma nem no dom da palavra. Estava na engenharia. Diego construiu um método, testado em centenas de mentores, criadores e líderes, que transforma o caos mental em clareza soberana.",
+                "Há anos Diego estuda uma pergunta que ninguém pergunta alto: por que especialistas brilhantes são ignorados enquanto comunicadores medíocres são seguidos?",
+                "A resposta não estava no carisma nem no dom da palavra. Estava na engenharia. Diego construiu um método, testado em centenas de alunos, que transforma o caos mental em clareza soberana.",
                 "O Arquiteto de Ideias é esse método. Didático, denso, sem rodeio. Cada aula foi roteirizada para que você sinta a transformação antes de terminar o módulo.",
-                "Diego não ensina oratória performática. Ele ensina engenharia verbal. A diferença é que uma você usa no palco. A outra você usa na vida inteira."
+                "Aqui Diego ensina Engenharia Verbal. Isso vai aumentar a sua performance não somente em suas apresentações mas em sua vida inteira!"
               ].map((p, i) => (
                 <p key={i} className="text-lg font-light leading-relaxed text-brand-cream/65">{p}</p>
               ))}
