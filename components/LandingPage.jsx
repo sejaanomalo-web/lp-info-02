@@ -490,9 +490,13 @@ function AnimatedCounter({ target, suffix = "" }) {
 export default function LandingPage() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [activeModule, setActiveModule] = useState(0);
+  const [showFixedCta, setShowFixedCta] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setNavScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setNavScrolled(window.scrollY > 60);
+      setShowFixedCta(window.scrollY > 500);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
 
     const observer = new IntersectionObserver(
@@ -1262,6 +1266,12 @@ export default function LandingPage() {
           © 2026 Diego Knebel · @diegoknebel_ · Todos os direitos reservados
         </p>
       </footer>
+      {/* Barra CTA fixa mobile */}
+      <div className={`fixed-mobile-cta ${showFixedCta ? "visible" : ""}`}>
+        <PrimaryButton className="w-full" href={CHECKOUT_URL}>
+          Quero garantir minha vaga
+        </PrimaryButton>
+      </div>
     </main>
   );
 }
