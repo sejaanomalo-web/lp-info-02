@@ -555,7 +555,7 @@ export default function LandingPage() {
                 loading="eager"
               />
             </span>
-            <PrimaryButton className="navbar-cta" href={CHECKOUT_URL}>
+            <PrimaryButton className="navbar-cta" href="#oferta">
               Quero garantir minha vaga
             </PrimaryButton>
           </div>
@@ -604,7 +604,7 @@ export default function LandingPage() {
                 Você fala, mas as pessoas não chegam onde você quer.
               </p>
               <div className="hero-cta mt-10">
-                <PrimaryButton href={CHECKOUT_URL}>Quero construir minha clareza</PrimaryButton>
+                <PrimaryButton href="#oferta">Quero construir minha clareza</PrimaryButton>
                 <p className="cta-microcopy mt-3">Acesso vitalício · Garantia de 7 dias</p>
               </div>
             </div>
@@ -776,7 +776,7 @@ export default function LandingPage() {
               O mundo está em silêncio esperando pelo seu comando.
             </p>
             <div className="mt-10">
-              <PrimaryButton href={CHECKOUT_URL}>Quero minha vaga no Arquiteto de Ideias</PrimaryButton>
+              <PrimaryButton href="#oferta">Quero minha vaga no Arquiteto de Ideias</PrimaryButton>
             </div>
             <p className="closing-highlight__meta mt-5 text-sm font-light">
               12x de R$ 15,11&nbsp;·&nbsp;ou R$ 147,00 à vista&nbsp;·&nbsp;Garantia de 7 dias
@@ -1268,7 +1268,7 @@ export default function LandingPage() {
       </footer>
       {/* Barra CTA fixa mobile */}
       <div className={`fixed-mobile-cta ${showFixedCta ? "visible" : ""}`}>
-        <PrimaryButton className="w-full" href={CHECKOUT_URL}>
+        <PrimaryButton className="w-full" href="#oferta">
           Quero garantir minha vaga
         </PrimaryButton>
       </div>
